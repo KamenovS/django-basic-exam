@@ -1,0 +1,122 @@
+{% extends 'shared/base.html' %}
+
+
+{% block content %}
+
+<!-- 🔎 Search -->
+<form method="get" class="row g-2 mb-2">
+    <div class="col-md-8">
+        <input
+            type="text"
+            name="q"
+            class="form-control"
+            placeholder="Filter by Route or Driver's Current Location"
+            value="{{ search_query }}"
+        >
+    </div>
+
+    <div class="col-md-4 d-flex">
+        <button class="btn btn-primary me-2 w-100">Search</button>
+        <a href="{% url 'home' %}" class="btn btn-success w-100">Reset</a>
+    </div>
+</form>
+
+
+<div class="row">
+
+    <!-- 📦 Company Offers -->
+    <div class="col-md-6">
+
+        <a href="{% url 'offer_list' %}" class="card-link text-decoration-none">
+            <div class="card mb-3 shadow-sm clickable-card text-navy">
+                <div class="card-body text-center">
+                    <h4 class="mb-0">Company Offers</h4>
+                </div>
+            </div>
+        </a>
+
+        {% for offer in offers_page_obj %}
+        <a href="{% url 'offer_detail' offer.pk %}" class="text-decoration-none text-reset">
+            <div class="card mb-3 shadow-sm clickable-card">
+                <div class="card-body">
+                        <h5 class="card-title fw-bold text-navy"><i class="bi bi-truck"></i> {{ offer.company.name }}</h5>
+                    <p class="mb-1">
+                        <strong>Route:</strong>
+                        {{ offer.pickup_location }} → {{ offer.delivery_location }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Email:</strong> {{ offer.company.email}}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Price:</strong> {{ offer.price }} €
+                    </p>
+
+                    <span class="badge bg-primary">
+                        <i class="bi bi-telephone-inbound"></i>
+                        {{ offer.company.phone }}
+                    </span>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+            <h4 class="text-navy">No offers found.</h4>
+        {% endfor %}
+
+        <!-- Offers Pagination -->
+        {% include "shared/_pagination.html" with page_obj=offers_page_obj page_param="offers_page" theme="navy" %}
+    </div>
+
+
+    <!-- 🚚 Driver Availability -->
+    <div class="col-md-6">
+
+        <a href="{% url 'availability_list' %}" class="card-link text-decoration-none">
+            <div class="card mb-3 shadow-sm clickable-card text-green">
+                <div class="card-body text-center">
+                    <h4 class="mb-0">Available Drivers</h4>
+                </div>
+            </div>
+        </a>
+
+        {% for availability in drivers_page_obj %}
+        <a href="{% url 'availability_detail' availability.pk %}" class="text-decoration-none text-reset">
+            <div class="card mb-3 shadow-sm clickable-card">
+                <div class="card-body">
+                        <h5 class="card-title fw-bold text-green"><i class="bi bi-truck"></i> {{ availability.driver.name }}</h5>
+
+
+                    <p class="mb-1">
+                        <strong>Current Location:</strong>
+                        {{ availability.current_location }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Category:</strong>
+                        {{ availability.driver.get_category_display }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Trailer Type:</strong>
+                        {{ availability.driver.get_trailer_type_display }}
+                    </p>
+
+                    <span class="badge bg-success">
+                        <i class="bi bi-telephone-inbound"></i>
+                        {{ availability.driver.phone }}
+                    </span>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+            <h4 class="text-green">No drivers found.</h4>
+        {% endfor %}
+
+        <!-- Drivers Pagination -->
+        {% include "shared/_pagination.html" with page_obj=drivers_page_obj page_param="drivers_page" theme="green" %}
+    </div>
+
+</div>
+
+{% endblock %}

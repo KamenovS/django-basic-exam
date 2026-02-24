@@ -1,0 +1,86 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div class="col-md-0">
+    <div class="card shadow-sm header-card header-navy mb-4 ">
+        <div class="card-body py-2 px-3">
+            <h2 class="mb-0 fs-5">All Company Offers</h2>
+        </div>
+    </div>
+</div>
+
+<!-- 🔎 Search (Pickup + Delivery) -->
+<form method="get" class="mb-3 d-flex">
+    <input
+        type="text"
+        name="q"
+        class="form-control me-2"
+        placeholder="Search by pickup or delivery location"
+        value="{{ request.GET.q|default:'' }}"
+    >
+    <button class="btn btn-primary">Search</button>
+    <a href="{% url 'offer_list' %}" class="btn btn-success ms-2">Reset</a>
+</form>
+
+<a href="{% url 'offer_create' %}" class="btn btn-primary mb-3">Create New Offer</a>
+
+<div class="row">
+    {% for offer in offers %}
+    <div class="col-md-6 mb-4">
+
+        <!-- Clickable Card -->
+        <div class="card shadow-sm border-0 offer-card"
+             onclick="window.location='{% url 'offer_detail' offer.pk %}'">
+
+            <div class="card-body d-flex justify-content-between align-items-start">
+
+                <!-- Main Info -->
+                <div>
+                    <h5 class="card-title fw-bold text-navy">
+                        {{ offer.company.name }}
+                    </h5>
+
+                    <p>
+                        Route: {{ offer.pickup_location }} → {{ offer.delivery_location }}
+                    </p>
+
+                    <span class="badge bg-primary mb-2">
+                        {{ offer.price }} €
+                    </span>
+                </div>
+
+                <!-- Edit/Delete Icons -->
+                <div class="d-flex flex-column ms-3">
+
+                    <!-- Grey Edit -->
+                    <a href="{% url 'offer_update' offer.pk %}"
+                       class="btn btn-sm btn-secondary icon-btn mb-2"
+                       title="Edit"
+                       onclick="event.stopPropagation();">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <!-- Red Delete -->
+                    <a href="{% url 'offer_delete' offer.pk %}"
+                       class="btn btn-sm btn-danger icon-btn"
+                       title="Delete"
+                       onclick="event.stopPropagation();">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    {% empty %}
+    <h4 class="text-navy">No offers available.</h4>
+    {% endfor %}
+
+    {% include "shared/_pagination.html" with page_param="page" search_query=request.GET.q theme="navy" %}
+
+
+</div>
+{% endblock %}

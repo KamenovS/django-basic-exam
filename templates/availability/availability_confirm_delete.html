@@ -1,0 +1,54 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow border-0">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Delete Driver Availability</h5>
+            </div>
+
+            <div class="card-body text-center">
+
+                <h4 class="mb-3">
+                    Are you sure you want to delete?
+                </h4>
+
+                <h5 class="fw-bold text-danger">
+                    Driver: {{ driveravailability.driver.name}}
+                </h5>
+
+                <h5 class="fw-bold text-danger">
+                    Current Location: {{ driveravailability.current_location}}
+                </h5>
+
+                <h5 class="fw-bold text-danger">
+                    {{ availability.current_location}}
+                </h5>
+
+                <p class="text-muted mt-2">
+                    This action cannot be undone.
+                </p>
+
+                <form method="post" class="mt-4">
+                    {% csrf_token %}
+
+                    <button type="submit" class="btn btn-danger me-2">
+                        Delete
+                    </button>
+
+                    <a href="{% url 'availability_list' %}"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LogisticHub</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+
+</head>
+
+<body>
+
+    {% include 'shared/navbar.html' %}
+
+    <!-- Background Image -->
+    {% if bg_image_url %}
+        <div id="background-image" style="background-image: url('{{ bg_image_url }}');"></div>
+    {% endif %}
+    <div class="bg-overlay"></div>
+
+    <!-- Page Content -->
+    <main class="container container-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'shared/footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            const bg = document.getElementById('background-image');
+            if(bg){
+                bg.classList.add('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>

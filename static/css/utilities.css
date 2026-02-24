@@ -1,0 +1,36 @@
+.text-navy {
+    color: #0a3d62 !important;
+}
+
+.text-green {
+    color: #2e7d32 !important;
+}
+
+.text-danger-custom {
+    color: #b23a48 !important;
+}
+
+.text-muted-custom {
+    color: #7b8a97 !important;
+}
+
+.text-green h4 {
+    color: #2e7d32; /* Green */
+    margin: 0;
+    transition: color 0.2s;
+}
+
+.text-green:hover h4 {
+    color: #0a3d62; /* Navy */
+}
+
+.text-navy h2 {
+    font-size: 1.1rem;       /* small size to match All Drivers card */
+    margin: 0;
+    font-weight: 600;
+    text-align: left;
+    color: #0a3d62;           /* Navy */
+}
+
+
+

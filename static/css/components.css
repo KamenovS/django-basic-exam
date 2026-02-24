@@ -1,0 +1,318 @@
+/* ============================= */
+/*             CARDS             */
+/* ============================= */
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e3e8ee;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+}
+
+.offer-card:hover {
+    border: 2px solid #0d6efd; /* blue outline */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.offer-card .btn-sm {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+/* Card hover effect */
+.offer-card {
+    cursor: pointer; /* pointer instead of arrow */
+    transition: all 0.2s;
+}
+
+.offer-card:hover {
+    border: 2px solid #0d6efd; /* blue outline */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Smaller icon buttons for edit/delete */
+.offer-card .btn-sm {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+
+/* Driver card hover effect - green theme */
+.driver-card {
+    cursor: pointer; /* pointer on hover */
+    transition: all 0.2s;
+}
+
+.driver-card:hover {
+    border: 1px solid #198754; /* green outline */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Small circular icon buttons for edit/delete */
+.driver-card .btn-sm.icon-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50% !important; /* circular buttons */
+}
+
+/* Hover and pointer effect for company cards */
+.company-card {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.company-card:hover {
+    border: 1px solid #0d6efd; /* blue outline */
+    box-shadow: 0 px 20px rgba(0,0,0,0.15);
+}
+
+/* Small icon buttons for edit/delete */
+.company-card .btn-sm {
+    width: 36px;
+    height: 36px;
+    padding: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50%;
+}
+
+.card-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit;        /* Keep the text-green color */
+    display: block;        /* Make link fill the card area */
+}
+
+.card-link:hover h4 {
+    color: #145a32; /* Darker green on hover */
+}
+
+.card-link:hover p {
+    color: #1f2d3d; /* Optional: subtle hover on description */
+}
+
+.clickable-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.clickable-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* ============================= */
+/*        HEADER CARD            */
+/* ============================= */
+
+.header-card {
+    border-radius: 8px;
+    max-width: 180px;
+    background-color: #e6f2ea;
+    border-left: 4px solid #2e7d32;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.header-card .card-body {
+    padding: 0.5rem 1rem;
+}
+
+.header-card h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+/* Disable hover animation from global .card */
+.header-card:hover {
+    transform: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    cursor: default;
+}
+/* Navy header card */
+.header-navy {
+    border-left: 4px solid #0a3d62;  /* Navy accent bar */
+}
+
+.header-navy h2 {
+    color: #0a3d62; /* Navy text */
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+/* Green header card */
+.header-green {
+    border-left: 4px solid #2e7d32;  /* Green accent bar */
+}
+
+.header-green h2 {
+    color: #2e7d32; /* Green text */
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+
+
+/* Forms */
+.form-control,
+.form-select {
+    border: 1px solid #ccd6dd;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0a3d62;
+    box-shadow: 0 0 0 0.1rem rgba(10, 61, 98, 0.15);
+}
+
+
+/* ============================= */
+/* PRIMARY (NAVY) */
+/* ============================= */
+
+.btn-primary {
+    background-color: #0a3d62;
+    border: none;
+    color: #ffffff;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #08324f;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: #07273d !important;
+    border-color: #07273d !important;
+    transform: translateY(1px);
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(10, 61, 98, 0.25);
+}
+
+
+/* ============================= */
+/* SUCCESS (GREEN) */
+/* ============================= */
+
+.btn-success {
+    background-color: #2e7d32;
+    border: none;
+    color: #ffffff;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #256428;
+}
+
+.btn-success:active,
+.btn-success.active,
+.show > .btn-success.dropdown-toggle {
+    background-color: #1e5221 !important;
+    border-color: #1e5221 !important;
+    transform: translateY(1px);
+}
+
+.btn-success:focus,
+.btn-success:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+}
+
+.badge {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+.badge.bg-success {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-primary {
+    background-color: #0a3d62 !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-danger {
+    background-color: #b23a48 !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-secondary {
+    background-color: #34495e !important;
+    color: #ffffff !important;
+}
+
+.card,
+.offer-card,
+.driver-card,
+.company-card,
+.header-card
+{
+    background-color: rgba(255, 255, 255, 0.6);  /* semi-transparent white */
+    backdrop-filter: blur(5px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* subtle border */
+}
+
+
+.form-control,
+.form-select,
+.input-group .form-control {
+    background-color: rgba(255, 255, 255, 0.6);  /* semi-transparent */
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #1f2d3d; /* keep text visible */
+    transition: all 0.2s ease;
+}
+
+/* Focus state (optional: stronger highlight on focus) */
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(10, 61, 98, 0.6);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.35);
+}
+

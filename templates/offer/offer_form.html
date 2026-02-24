@@ -1,0 +1,109 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+
+                    <!-- 🔥 Dynamic Title -->
+                    <h4 class="mb-4 text-center fw-bold text-navy">
+                        {% if object %}
+                            Edit Company Offer
+                        {% else %}
+                            Create Company Offer
+                        {% endif %}
+                    </h4>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- Company -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.company.label }}
+                            </label>
+                            {{ form.company }}
+                            <div class="text-danger small">
+                                {{ form.company.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.title.label }}
+                            </label>
+                            {{ form.title }}
+                            <div class="text-danger small">
+                                {{ form.title.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.description.label }}
+                            </label>
+                            {{ form.description }}
+                            <div class="text-danger small">
+                                {{ form.description.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Route Row -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    {{ form.pickup_location.label }}
+                                </label>
+                                {{ form.pickup_location }}
+                                <div class="text-danger small">
+                                    {{ form.pickup_location.errors }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    {{ form.delivery_location.label }}
+                                </label>
+                                {{ form.delivery_location }}
+                                <div class="text-danger small">
+                                    {{ form.delivery_location.errors }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.price.label }}
+                            </label>
+                            {{ form.price }}
+                            <div class="text-danger small">
+                                {{ form.price.errors }}
+                            </div>
+                        </div>
+
+                        <!-- 🔥 Dynamic Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                {% if object %}
+                                    Edit
+                                {% else %}
+                                    Create
+                                {% endif %}
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

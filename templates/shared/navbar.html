@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container">
+    <!-- Brand with colored split -->
+    <a class="navbar-brand fw-bold " href="{% url 'home' %}">
+      <span class="logi">Logistic</span><span class="hub">Hub</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+
+        <!-- Companies Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Companies</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'company_list' %}">All Companies</a></li>
+            <li><a class="dropdown-item" href="{% url 'company_create' %}">Register Company</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'offer_list' %}">Company Offers</a></li>
+            <li><a class="dropdown-item" href="{% url 'offer_create' %}">Create Company Offer</a></li>
+          </ul>
+        </li>
+
+        <!-- Drivers Dropdown -->
+            <li class="nav-item dropdown driver-dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Drivers</a>
+              <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'driver_list' %}">All Drivers</a></li>
+              <li><a class="dropdown-item" href="{% url 'driver_create' %}">Register Driver</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'availability_list' %}">Available Drivers</a></li>
+              <li><a class="dropdown-item" href="{% url 'availability_create' %}">Create Driver Availability</a></li>
+      </ul>
+    </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

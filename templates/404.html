@@ -1,0 +1,95 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+<style>
+/* Overlay background to improve visibility */
+.error-wrapper {
+    background: rgba(0, 0, 0, 0.65);
+    padding: 60px 20px;
+    border-radius: 20px;
+}
+
+/* Big animated truck */
+.truck {
+    display: inline-block;
+    animation: drive 3s ease-in-out infinite;
+    font-size: 4rem;
+}
+
+@keyframes drive {
+    0% { transform: translateX(-40px); }
+    50% { transform: translateX(40px); }
+    100% { transform: translateX(-40px); }
+}
+
+/* Blinking dispatch signal */
+.signal {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Strong green accent */
+.green-accent {
+    background-color: var(--bs-success);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: 600;
+}
+</style>
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+
+    <div class="error-wrapper text-center text-white shadow-lg">
+
+        <h1 class="display-1 fw-bold text-success">404</h1>
+
+        <div class="green-accent mb-4">
+            You’re too late… Everything’s delivered.
+        </div>
+
+        <p class="lead">
+            The truck has left the warehouse.
+        </p>
+
+        <p class="text-light signal">
+            📡 Dispatch searching for missing page...
+        </p>
+
+        <div class="my-4">
+            <span class="truck text-success"><i class="bi bi-truck"></i></span>
+        </div>
+
+        <ul class="list-unstyled mt-3">
+            <li>✔ This route never existed</li>
+            <li>✔ The cargo was successfully delivered</li>
+            <li>✔ The driver ignored the GPS again</li>
+            <li>✔ You typed faster than dispatch can react</li>
+        </ul>
+
+        <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-success btn-lg me-2 shadow">
+                Back to LogisticHub Center
+            </a>
+
+            <a href="javascript:history.back()" class="btn btn-outline-light btn-lg">
+                Retry Last Route
+            </a>
+        </div>
+
+        <div class="mt-4 small text-light">
+            Error 404 — Page Not Found
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

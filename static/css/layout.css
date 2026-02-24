@@ -1,0 +1,197 @@
+/* ============================= */
+/*            NAVBAR             */
+/* ============================= */
+
+.navbar {
+    position: relative;
+    background-color: transparent !important; /* parent itself transparent */
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+    border-radius: 0 0 12px 12px;
+    z-index: 1000; /* make sure it's above page content */
+}
+
+/* Jelly blur effect only behind content */
+.navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; bottom:0; left:0; right:0 */
+    background-color: rgba(192, 192, 192, 0.25);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 0 0 12px 12px;
+    z-index: -1; /* behind navbar content */
+}
+
+/* Brand styling */
+.navbar-brand {
+    font-weight: 700;
+    color: #0a3d62 !important;
+    font-size: 1.5rem;
+}
+
+/* Links styling */
+.nav-link {
+    color: #34495e !important;
+    font-size: 1.15rem;
+    font-color: #0a3d62 !important;
+}
+
+.nav-link:hover {
+    color: #0a3d62 !important;
+    font-size: 1.15rem;
+    font-color: #0a3d62 !important;
+}
+
+/* Ensure dropdown menu is above pseudo-element */
+.navbar .dropdown-menu {
+    z-index: 1100; /* higher than ::before */
+    background-color: #1f2d3d;
+    font-size: 1.1rem/* solid so text is readable */
+}
+
+.navbar-brand .logi {
+    color: #0a3d62;  /* Executive Navy */
+    font-weight: 700;
+}
+
+.navbar-brand .hub {
+    color: #2e7d32;  /* Executive Green */
+    font-weight: 700;
+}
+* Brand colors */
+.navbar-brand .logi {
+    color: #0a3d62;  /* Executive Navy */
+    font-weight: 700;
+}
+
+.navbar-brand .hub {
+    color: #2e7d32;  /* Executive Green */
+    font-weight: 700;
+}
+
+/* Optional: subtle hover effect */
+.navbar-brand:hover .logi,
+.navbar-brand:hover .hub {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+/* Dropdown background */
+.dropdown-menu {
+    background-color: #1f2d3d;   /* dark executive background */
+    border: 1px solid #0a3d62;  /* navy border */
+}
+
+/* Dropdown items text and hover */
+.dropdown-item {
+    color: #ffffff;               /* white text */
+    transition: 0.2s;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #0a3d62;   /* navy on hover */
+    color: #ffffff;
+}
+
+/* Optional: divider color */
+.dropdown-divider {
+    border-top: 1px solid #34495e;
+}
+
+/* Keep dropdown toggle color */
+
+
+/* Drivers dropdown hover */
+.nav-item.dropdown.driver-dropdown .dropdown-item:hover {
+    background-color: #2e7d32; /* green hover */
+    color: #ffffff;
+}
+
+/* Dropdown background for all dropdowns */
+.dropdown-menu {
+    background-color: #1f2d3d;   /* dark executive background */
+    border: 1px solid #0a3d62;  /* default border color */
+}
+
+/* Default dropdown items */
+.dropdown-item {
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+/* Divider color */
+.dropdown-divider {
+    border-top: 1px solid #34495e;
+}
+
+/* Hover for Company dropdown (navy) */
+.company-dropdown .dropdown-item:hover {
+    background-color: #0a3d62; /* Executive Navy */
+
+}
+
+/* Hover for Drivers dropdown (green) */
+.driver-dropdown .dropdown-item:hover {
+    background-color: #2e7d32; /* Executive Green */
+
+}
+
+/* Dropdown toggle links */
+.navbar .nav-link.dropdown-toggle {
+
+}
+
+.navbar .nav-link.dropdown-toggle:hover {
+    color: #0a3d62;
+}
+
+/* Drivers navbar dropdown menu */
+.driver-dropdown .dropdown-menu {
+    background-color: #2e7d32 !important;   /* deep green background */
+    border-color: #2e7d32 !important;
+}
+
+/* Dropdown items text color */
+.driver-dropdown .dropdown-item {
+    color: #ffffff !important;
+    transition: 0.2s;
+}
+
+/* Hover / focus effect for items */
+.driver-dropdown .dropdown-item:hover,
+.driver-dropdown .dropdown-item:focus {
+    background-color: #145a32 !important;   /* darker green */
+    color: #ffffff !important;
+}
+
+/* Divider color */
+.driver-dropdown .dropdown-divider {
+    border-top: 1px solid #145a32 !important;  /* subtle green divider */
+}
+
+/* ============================= */
+/*            FOOTER             */
+/* ============================= */
+
+.footer {
+    position: relative;
+    color: #222; /* text color */
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: transparent; /* parent transparent */
+}
+
+/* Jelly/frosted effect behind footer content */
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; bottom:0; left:0; right:0 */
+    background-color: rgba(192, 192, 192, 0.25); /* light silver jelly */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-top: 1px solid rgba(200, 200, 200, 0.5);
+    border-radius: 12px 12px 0 0; /* rounded top corners */
+    z-index: -1; /* behind content */
+}

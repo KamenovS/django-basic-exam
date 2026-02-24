@@ -1,0 +1,60 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="col-md-2">
+    <div class="card shadow-sm header-card header-green mb-4">
+        <div class="card-body py-2 px-3">
+            <h2 class="mb-0 fs-5">All Available Drivers</h2>
+        </div>
+    </div>
+</div>
+
+<!-- 🔎 Search Form -->
+<form method="get" class="mb-3 d-flex">
+    <input type="text" name="location" class="form-control me-2" placeholder="Search by Current Location" value="{{ request.GET.location|default:'' }}">
+    <button class="btn btn-success">Search</button>
+    <a href="{% url 'availability_list' %}" class="btn btn-primary ms-2">Reset</a>
+</form>
+
+<a href="{% url 'availability_create' %}" class="btn btn-success mb-3">Create Availability</a>
+
+<div class="row">
+    {% for availability in availabilities %}
+    <div class="col-md-6 mb-4"> <!-- Half-width cards -->
+        <div class="card shadow-sm border-0 driver-card" onclick="window.location='{% url 'availability_detail' availability.pk %}'">
+            <div class="card-body d-flex justify-content-between align-items-start">
+
+                <!-- Driver Info -->
+                <div>
+                    <h5 class="card-title fw-bold text-green"><i class="bi bi-truck"></i> {{ availability.driver.name }}</h5>
+                    <p class="text-muted"><strong>Current Location:</strong> {{ availability.current_location }}</p>
+                    <p class="text-muted"><strong>Available From:</strong> {{ availability.available_from }}</p>
+                    <span class="badge bg-success mb-2"> <i class="bi bi-telephone-inbound"></i> {{ availability.driver.phone }} </span>
+                </div>
+
+
+
+                <!-- Edit/Delete Icons -->
+                <div class="d-flex flex-column ms-3">
+                    <!-- Yellow Edit -->
+                    <a href="{% url 'availability_update' availability.pk %}" class="btn btn-sm btn-secondary icon-btn mb-1" title="Edit" onclick="event.stopPropagation();">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <!-- Red Delete -->
+                    <a href="{% url 'availability_delete' availability.pk %}" class="btn btn-sm btn-danger icon-btn" title="Delete" onclick="event.stopPropagation();">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <h4 class="text-green"> No drivers available.</h4>
+    {% endfor %}
+
+     {% include "shared/_pagination.html" with page_param="page" search_query=request.GET.q theme="green" %}
+
+
+</div>
+{% endblock %}

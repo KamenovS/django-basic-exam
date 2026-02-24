@@ -1,0 +1,159 @@
+.themed-pagination.navy .page-link {
+    background-color: white;
+    color: #0d3b66;
+    border: 1px solid #0d3b66;
+}
+
+.themed-pagination.navy .page-link:hover {
+    background-color: #0d3b66;
+    color: white;
+}
+
+.themed-pagination.navy .page-item.active .page-link {
+    background-color: #0d3b66;
+    border-color: #0d3b66;
+    color: white;
+}
+
+
+/* ---------- GREEN THEME ---------- */
+
+.themed-pagination.green .page-link {
+    background-color: white;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+.themed-pagination.green .page-link:hover {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.themed-pagination.green .page-item.active .page-link {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+    color: white;
+}
+
+.themed-pagination.navy .page-link,
+.themed-pagination.green .page-link {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0,0,0,0.1); /* subtle border */
+    transition: all 0.2s ease;
+}
+
+/* Hover / active states */
+.themed-pagination.navy .page-link:hover,
+.themed-pagination.navy .page-item.active .page-link {
+    background-color: rgba(13, 59, 102, 0.9);
+    color: white;
+    border-color: rgba(13, 59, 102, 0.35);
+}
+
+.themed-pagination.green .page-link:hover,
+.themed-pagination.green .page-item.active .page-link {
+    background-color: rgba(46, 125, 50, 0.9);
+    color: white;
+    border-color: rgba(46, 125, 50, 0.35);
+}
+
+/* ---------- SMALL COMMENT PAGINATION ---------- */
+
+/* Apply theme only to the comment pagination container */
+.comment-pagination .page-link {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    font-size: 0.85rem; /* smaller size */
+}
+
+/* NAV BUTTONS: Previous / Next (nav-text class) */
+.comment-pagination .page-link.nav-text.navy {
+    color: #0d3b66;
+    border: 1px solid #0d3b66;
+}
+
+.comment-pagination .page-link.nav-text.navy:hover {
+    background-color: rgba(13, 59, 102, 0.9);
+    color: white;
+    border-color: rgba(13, 59, 102, 0.35);
+}
+
+.comment-pagination .page-link.nav-text.green {
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+.comment-pagination .page-link.nav-text.green:hover {
+    background-color: rgba(46, 125, 50, 0.9);
+    color: white;
+    border-color: rgba(46, 125, 50, 0.35);
+}
+
+/* ---------- NAVY THEME FOR SMALL COMMENT PAGINATION ---------- */
+.comment-pagination.navy .page-link {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.85rem;
+    color: #0d3b66; /* numeric page default */
+    transition: all 0.2s ease;
+}
+
+/* Hover / active numeric pages */
+.comment-pagination.navy .page-link:hover,
+.comment-pagination.navy .page-item.active .page-link {
+    background-color: rgba(13, 59, 102, 0.9);
+    color: white;
+    border-color: rgba(13, 59, 102, 0.35);
+}
+
+/* Previous / Next buttons */
+.comment-pagination.navy .page-link.prev-next {
+    color: #0d3b66;
+    font-weight: 600;
+    border: 1px solid #0d3b66;
+}
+
+.comment-pagination.navy .page-link.prev-next:hover {
+    background-color: rgba(13, 59, 102, 0.9);
+    color: white;
+    border-color: rgba(13, 59, 102, 0.35);
+}
+
+/* ---------- GREEN THEME FOR SMALL COMMENT PAGINATION ---------- */
+.comment-pagination.green .page-link {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.85rem;
+    color: #2e7d32; /* numeric page default */
+    transition: all 0.2s ease;
+}
+
+/* Hover / active numeric pages */
+.comment-pagination.green .page-link:hover,
+.comment-pagination.green .page-item.active .page-link {
+    background-color: rgba(46, 125, 50, 0.9);
+    color: white;
+    border-color: rgba(46, 125, 50, 0.35);
+}
+
+/* Previous / Next buttons */
+.comment-pagination.green .page-link.prev-next {
+    color: #2e7d32;
+    font-weight: 600;
+    border: 1px solid #2e7d32;
+}
+
+.comment-pagination.green .page-link.prev-next:hover {
+    background-color: rgba(46, 125, 50, 0.9);
+    color: white;
+    border-color: rgba(46, 125, 50, 0.35);
+}

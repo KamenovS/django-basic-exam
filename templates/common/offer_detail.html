@@ -1,0 +1,153 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card border-dark shadow-sm">
+
+                <!-- Offer Info -->
+                <div class="card-body">
+                    <h3 class="card-title">{{ offer.company.name }}</h3>
+
+                    <p><strong>Title:</strong> {{ offer.title }}</p>
+                    <p><strong>Description:</strong> {{ offer.description }}</p>
+                    <p><strong>Route:</strong> {{ offer.pickup_location }} → {{ offer.delivery_location }}</p>
+                    <p><strong>Price:</strong> €{{ offer.price }}</p>
+
+                    <!-- Connected Drivers -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5>Connected Drivers</h5>
+
+                            {% if drivers %}
+                                <ul class="list-unstyled">
+                                    {% for driver in drivers %}
+                                        <li class="mb-2">
+                                            <a href="{% url 'driver_detail' driver.pk %}" class="fw-bold text-decoration-none">
+                                                <span class="text-green">
+                                                    <i class="bi bi-truck"></i> {{ driver.name }}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No drivers contacted this offer yet.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment Section -->
+                <div class="p-3 border-top">
+
+                    <button class="btn btn-primary btn-sm w-100 mb-2"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#comments-section"
+                            aria-expanded="false"
+                            aria-controls="comments-section">
+
+                        {% if page_obj.paginator.count %}
+                            Connections ({{ page_obj.paginator.count }})
+                        {% else %}
+                            Connect
+                        {% endif %}
+                    </button>
+
+                    <div class="collapse" id="comments-section">
+                        <div class="mt-3">
+
+                            <!-- Existing Comments -->
+                            {% for comment in comments %}
+                                <div class="border rounded p-2 mb-2">
+                                    <strong>Driver:</strong> {{ comment.driver.name }}
+                                    <div><strong>Message:</strong> {{ comment.message }}</div>
+                                    <div><strong>Posted at:</strong> {{ comment.created_at|date:"M d, Y H:i" }}</div>
+                                </div>
+                            {% empty %}
+                                <p class="text-muted">No connections yet.</p>
+                            {% endfor %}
+
+                            <!-- Pagination -->
+                            {% if page_obj.has_other_pages %}
+                            <nav class="mt-3 comment-pagination navy">
+                                <ul class="pagination pagination-sm justify-content-center">
+
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link prev-next"
+                                               href="?page={{ page_obj.previous_page_number }}#comments-section">
+                                                Previous
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if num == page_obj.number %}
+                                            <li class="page-item active">
+                                                <span class="page-link">{{ num }}</span>
+                                            </li>
+                                        {% elif num >= page_obj.number|add:-1 and num <= page_obj.number|add:1 %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ num }}#comments-section">{{ num }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link prev-next"
+                                               href="?page={{ page_obj.next_page_number }}#comments-section">
+                                                Next
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </nav>
+                            {% endif %}
+
+                            <!-- Comment Form -->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="mb-2">
+                                    {{ form.driver }}
+                                </div>
+                                <div class="mb-2">
+                                    {{ form.message }}
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    Connect
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasPage = urlParams.has("page");
+    const hasHash = window.location.hash === "#comments-section";
+
+    if (hasPage || hasHash) {
+        const commentsSection = document.getElementById("comments-section");
+        if (commentsSection) {
+            const collapse = new bootstrap.Collapse(commentsSection, {
+                toggle: true
+            });
+        }
+    }
+});
+</script>
+{% endblock %}

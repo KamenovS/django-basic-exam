@@ -75,7 +75,7 @@ class OfferForm(forms.ModelForm):
 
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter offer title...'
+                'placeholder': 'Enter offer title (e.g. Express, Standard, Economy...)'
             }),
 
             'description': forms.Textarea(attrs={

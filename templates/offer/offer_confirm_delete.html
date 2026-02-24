@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow border-0">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Delete Offer</h5>
+            </div>
+
+            <div class="card-body text-center">
+                <h4 class="mb-3">Are you sure you want to delete this offer?</h4>
+                <h4 class="fw-bold text-danger">Company: {{ offer.company.name }}</h4>
+                <h4 class="fw-bold text-danger">Route: {{ offer.pickup_location }} -> {{offer.delivery_location}} </h4>
+                <p class="text-muted mt-2">This action cannot be undone.</p>
+
+                <form method="post" class="mt-4">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger me-2">Delete</button>
+                    <a href="{% url 'offer_list' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

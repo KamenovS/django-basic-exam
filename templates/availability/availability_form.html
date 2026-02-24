@@ -1,0 +1,86 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+
+                    <!-- 🔥 Dynamic Title -->
+                    <h4 class="mb-4 text-center fw-bold">
+                        {% if object %}
+                            Update Availability
+                        {% else %}
+                            Create Availability
+                        {% endif %}
+                    </h4>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- Driver -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.driver.label }}
+                            </label>
+                            {{ form.driver }}
+                            <div class="text-danger small">
+                                {{ form.driver.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Current Location -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.current_location.label }}
+                            </label>
+                            {{ form.current_location }}
+                            <div class="text-danger small">
+                                {{ form.current_location.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Available From -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.available_from.label }}
+                            </label>
+                            {{ form.available_from }}
+                            <div class="text-danger small">
+                                {{ form.available_from.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                {{ form.description.label }}
+                            </label>
+                            {{ form.description }}
+                            <div class="text-danger small">
+                                {{ form.description.errors }}
+                            </div>
+                        </div>
+
+                        <!-- 🔥 Dynamic Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success">
+                                {% if object %}
+                                    Update
+                                {% else %}
+                                    Create
+                                {% endif %}
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
